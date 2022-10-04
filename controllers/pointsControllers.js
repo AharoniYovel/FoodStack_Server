@@ -50,6 +50,18 @@ exports.getCount = async (req, res) => {
     }
 }
 
+exports.pathIdValid = async (req, res) => {
+    try {
+        let donateIdParam = req.params.idDonated;
+        let validPathId = await PointModel.findOne({ donateId: donateIdParam }, { pathId: 1 });
+        res.json(validPathId);
+    }
+
+    catch (err) {
+        res.status(500).json({ err_msg: "There is problem, try again later" });
+    }
+}
+
 //todo [POST]
 exports.addPoint = async (req, res) => {
     try {
