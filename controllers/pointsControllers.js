@@ -47,10 +47,11 @@ exports.getCount = async (req, res) => {
     catch (err) {
         console.log(err);
         res.status(500).json({ msg: "There err to count", err });
-    }
+        
+    } 
 }
 
-exports.pathIdValid = async (req, res) => {
+exports.pathIdValid = async (req, res) => {cls
     try {
         let donateIdParam = req.params.idDonated;
         let validPathId = await PointModel.findOne({ donateId: donateIdParam }, { pathId: 1 });
