@@ -51,7 +51,7 @@ exports.getCount = async (req, res) => {
     } 
 }
 
-exports.pathIdValid = async (req, res) => {cls
+exports.pathIdValid = async (req, res) => {
     try {
         let donateIdParam = req.params.idDonated;
         let validPathId = await PointModel.findOne({ donateId: donateIdParam }, { pathId: 1 });
