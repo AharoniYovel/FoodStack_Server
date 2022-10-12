@@ -1,6 +1,7 @@
 const express = require("express");
 const volunteersControlles = require("../controllers/volunteersControllers");
 const { auth, authEmployee, authSuperAdmin } = require("../middlewares/auth");
+const { VolunteerModel } = require("../models/volunteerModel");
 const router = express.Router();
 
 
@@ -28,6 +29,24 @@ router.post("/login", volunteersControlles.login); //todo Login and generate Tok
 router.put("/volEdit/:idEdit", authEmployee, volunteersControlles.editVolunteer); //? edit the volunteer only by Employee [PUT]
 // authEmployee^^ //todo
 router.put("/addPathToVol", auth, volunteersControlles.addPathToPathAr);//?  [PUT]
+
+router.put('/delOnePath/:idVol/:idPath', async (req, res) => {
+
+    let idVol = req.params.idVol;
+    let idPath = req.params.idPath;
+
+    let volData = await VolunteerModel.findOne({ _id: idVol });
+
+    const indexOfPathToDel = volData.path_id.indexOf(idPath);
+
+    if (indexOfPathToDel > -1) {
+        volData.path_id.splice(indexOfPathToDel, 1);
+    }
+    volData.save();
+
+    res.json(volData);
+
+})
 
 router.delete("/delVol/:idDel", authEmployee, volunteersControlles.deleteVolunteer); //! delete a volunteer by Employee only [DEL]
 // authEmployee^^ //todo

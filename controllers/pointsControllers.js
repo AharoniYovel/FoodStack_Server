@@ -51,6 +51,7 @@ exports.getCount = async (req, res) => {
     } 
 }
 
+//* [GET]
 exports.pathIdValid = async (req, res) => {
     try {
         let donateIdParam = req.params.idDonated;
@@ -91,6 +92,7 @@ exports.deletePoint = async (req, res) => {
         res.status(500).json({ err_msg: "There is problem, try again later" });
     }
 }
+
 
 const genPointId = async (_model) => {
     let data = await _model.find({}, { _id: 0, point_id: 1 });

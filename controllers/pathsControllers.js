@@ -10,6 +10,7 @@ exports.checkRouter = async (req, res) => {
 //* [GET]
 exports.getListOfAll = async (req, res) => {
     let data = await PathModel.find({}).populate('volunteerID').populate({ path: 'arr_points_id', populate: { path: 'donateId pathId' } });
+    // let data = await PathModel.find({});
     res.json(data);
 }
 
@@ -102,15 +103,43 @@ exports.addPath = async (req, res) => {
     }
 }
 
-// exports.delOneDonated = async (req, res) => {
-//     try {
+//todo [POST]
+exports.delOneDonated = async (req, res) => {
+    try {
+        let idPathValid = req.params.idPathValid;
+        let idOfPoint = req.params.idOfPoint;
 
-//     }
+        let pathData = await PathModel.findOne({ _id: idPathValid });
 
-//     catch (err) {
+        const indexOfPointToDel = pathData.arr_points_id.indexOf(idOfPoint);
+        if (indexOfPointToDel > -1) {
+            pathData.arr_points_id.splice(indexOfPointToDel, 1);
+            pathData.arr_citys.splice(indexOfPointToDel, 1);
+        }
 
-//     }
-// }
+        pathData.save();
+
+        res.json(pathData);
+    }
+
+    catch (err) {
+        console.log(err);
+        res.status(500).json({ err_msg: "There is problem to delete point from pathModel.arr_points_id, try again later1", err })
+    }
+}
+
+//! [DEl]
+exports.deletePath = async (req, res) => {
+    try {
+        let idDelPath = req.params.idDelPath;
+        let data = await PathModel.deleteOne({ _id: idDelPath });
+        res.json(data);
+    }
+
+    catch (err) {
+        res.status(500).json({ err_msg: "There is problem to delete path, try again later" });
+    }
+}
 
 
 
