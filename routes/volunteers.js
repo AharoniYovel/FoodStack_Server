@@ -45,7 +45,6 @@ router.put('/delOnePath/:idVol/:idPath', async (req, res) => {
     volData.save();
 
     res.json(volData);
-
 })
 
 router.delete("/delVol/:idDel", authEmployee, volunteersControlles.deleteVolunteer); //! delete a volunteer by Employee only [DEL]
