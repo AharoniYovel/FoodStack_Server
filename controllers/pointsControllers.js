@@ -4,7 +4,7 @@ const { PointModel } = require("../models/pointModel");
 
 //* [GET]
 exports.getList = async (req, res) => {
-    let perPage = req.query.perPage || 10;
+    let perPage = req.query.perPage || 20;
     let page = req.query.page || 1;
 
     try {

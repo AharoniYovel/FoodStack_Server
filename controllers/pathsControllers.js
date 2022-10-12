@@ -38,6 +38,7 @@ exports.pathInfo = async (req, res) => {
 
 }
 
+//* [GET]
 exports.getCount = async (req, res) => {
     try {
 
@@ -100,6 +101,16 @@ exports.addPath = async (req, res) => {
         res.status(500).json({ err_msg: "There is problem in the server, try again later1", err });
     }
 }
+
+// exports.delOneDonated = async (req, res) => {
+//     try {
+
+//     }
+
+//     catch (err) {
+
+//     }
+// }
 
 
 
