@@ -60,29 +60,29 @@ exports.getCount = async (req, res) => {
 exports.addPath = async (req, res) => {
 
     try {
-
-        let path = new PathModel();
-        path.path_id = await genPathtId(PathModel);
-        path.arr_points_id = await (req.body);
+        
+        let path = new PathModel();  // * build in memory a schema of path
+        path.path_id = await genPathtId(PathModel);  //* generate an short id by looping the other path in the model & find the max id and add +1
+        path.arr_points_id = await (req.body);  //* push the objectID of the add points to an array that contains all the objectID`s of the path
 
 
         await path.save();
 
-        let data = await PathModel.find({ _id: path._id }).populate("arr_points_id");
+        let data = await PathModel.find({ _id: path._id }).populate("arr_points_id"); //* get all the schema`s of the objectID`s by populate them
         let arr_points_id_data = data[0].arr_points_id
         let citys = [];
 
 
 
         arr_points_id_data.forEach((elem, i) => {
-            citys[i] = elem.city;
+            citys[i] = elem.city;                      //* A loop that push the citys of the objectID`s to an temp array "citys" that contains the citys the path holds
         })
         console.log(citys);
 
-        PathModel.updateOne({ _id: path._id }, path.arr_citys = citys);
+        PathModel.updateOne({ _id: path._id }, path.arr_citys = citys); //* The push in the DB of the temp array "citys"
 
         arr_points_id_data.forEach((elem, i) => {
-            PointModel.updateOne({ _id: elem._id }, elem.pathId = path._id);
+            PointModel.updateOne({ _id: elem._id }, elem.pathId = path._id);       //* A loop that push to every point that include in the path, the ID of the current path
             elem.save();
         })
 
