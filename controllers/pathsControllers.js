@@ -95,7 +95,7 @@ exports.addPath = async (req, res) => {
 
     catch (err) {
         console.log(err);
-        res.status(500).json({ err_msg: "There is problem in the server, try again later1", err });
+        res.status(500).json({ err_msg: "There is problem in the server, try again later", err });
     }
 }
 
