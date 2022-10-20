@@ -58,10 +58,6 @@ exports.getCount = async (req, res) => {
 
 //todo [POST]
 exports.addPath = async (req, res) => {
-    // let validBody = validatePath(req.body);
-    // if (validBody.error) {
-    //     return res.status(400).json(validBody.error.details);
-    // }
 
     try {
 
