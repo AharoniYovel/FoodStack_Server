@@ -54,8 +54,6 @@ exports.getCount = async (req, res) => {
     }
 }
 
-
-
 //todo [POST]
 exports.addPath = async (req, res) => {
 
