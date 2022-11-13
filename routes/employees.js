@@ -3,7 +3,6 @@ const employeesControlles = require('../controllers/employeesControllers');
 const { authSuperAdmin, authEmployee } = require("../middlewares/auth");
 const router = express.Router();
 
-
 router.get("/", employeesControlles.checkRouter); //* check router [GET]
 router.get("/checkToken", authEmployee, employeesControlles.checkToken); //* Check Token & the role of the employee without DB request [GET]
 router.get("/empInfo/:id", authSuperAdmin, employeesControlles.employeeInfo); //* get info of employee to edit [GET]
