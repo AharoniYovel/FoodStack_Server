@@ -21,5 +21,4 @@ router.put('/delOneDonated/:idPathValid/:idOfPoint', pathsControllers.delOneDona
 router.delete('/delPath/:idDelPath', pathsControllers.deletePath); //! [DEl]
 
 
-
 module.exports = router;
