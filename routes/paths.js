@@ -1,7 +1,7 @@
 const express = require("express");
 const pathsControllers = require("../controllers/pathsControllers");
 const { auth } = require("../middlewares/auth");
-const router = express.Router();
+const router = express.Router(); 
 
 router.get("/", pathsControllers.checkRouter); //* [GET]
 
