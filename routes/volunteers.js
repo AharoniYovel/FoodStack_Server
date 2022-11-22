@@ -19,7 +19,8 @@ router.get("/list", authEmployee, volunteersControlles.getList); //* get all lis
 
 router.get("/listOfPathsOfVol", auth, volunteersControlles.getListOfPaths); //* get all list of path of volunteer [GET]
 
-router.get("/count", authEmployee, volunteersControlles.getCount); //* Get the number of Obj in collection [GET]
+// router.get("/count", authEmployee, volunteersControlles.getCount); //* Get the number of Obj in collection [GET]
+router.get("/count", volunteersControlles.getCount); //* Get the number of Obj in collection [GET]
 
 // authEmployee^^ //todo
 

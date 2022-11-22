@@ -6,8 +6,9 @@ const router = express.Router();
 
 router.get("/list", pointsControllers.getList); //* [GET]
 router.get('/listForMap', authEmployee, pointsControllers.getListForMap); //* [GET]
-router.get('/count', authEmployee, pointsControllers.getCount); //* [GET]
-router.get('/pathIdValid/:idDonated',pointsControllers.pathIdValid); //* [GET]
+// router.get('/count', authEmployee, pointsControllers.getCount); //* [GET]
+router.get('/count', pointsControllers.getCount); //* [GET]
+router.get('/pathIdValid/:idDonated', pointsControllers.pathIdValid); //* [GET]
 
 router.post("/addPoint", pointsControllers.addPoint); //todo [POST]
 

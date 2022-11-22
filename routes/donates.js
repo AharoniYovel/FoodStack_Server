@@ -7,7 +7,8 @@ const router = express.Router();
 router.get("/", donatesControlles.checkRouter); //* check router [GET]
 router.get("/donInfo/:id", authEmployee, donatesControlles.donInfo); //* get info of donated to edit [GET]
 router.get("/list", authEmployee, donatesControlles.getList); //* get all list of donates [GET]
-router.get("/count", authEmployee, donatesControlles.getCount); //* Get the number of Obj in collection [GET]
+// router.get("/count", authEmployee, donatesControlles.getCount); //* Get the number of Obj in collection [GET]
+router.get("/count", donatesControlles.getCount); //* Get the number of Obj in collection [GET]
 
 //authEmployee^^ //todo
 
