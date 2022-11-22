@@ -7,8 +7,7 @@ router.get("/", employeesControlles.checkRouter); //* check router [GET]
 router.get("/checkToken", authEmployee, employeesControlles.checkToken); //* Check Token & the role of the employee without DB request [GET]
 router.get("/empInfo/:id", authSuperAdmin, employeesControlles.employeeInfo); //* get info of employee to edit [GET]
 router.get("/list", authSuperAdmin, employeesControlles.getList); //* Check Token & the role of the employee without DB request [GET]
-// router.get("/count", authEmployee, employeesControlles.getCount); //* Get the number of Obj in collection [GET]
-router.get("/count", employeesControlles.getCount); //* Get the number of Obj in collection [GET]
+router.get("/count", authEmployee, employeesControlles.getCount); //* Get the number of Obj in collection [GET]
 // authEmployee^^ //todo
 
 
