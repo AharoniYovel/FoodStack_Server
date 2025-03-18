@@ -1,0 +1,12 @@
+{
+  "execMap": {
+    "js": "node --inspect"
+  },
+  "restartable": "rs",
+  "ext": "js,json,mjs",
+  "ignore": ["node_modules"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "postrestart": "echo 'App restarted!'"
+}
